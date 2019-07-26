@@ -11,25 +11,31 @@ Represent a vehicle and test your program by initializing the instance variables
 '''
 
 class Vehicle:
-    def __init__(self, mileage, fuel):
+    def __init__(self):
         self.reserve_fuel = 5
-        self.mileage = mileage
-        self.fuel = fuel
+        self.mileage = None
+        self.fuel_left = None
     
-    def identify_distance_that_can_be_travelled(self):
-        remaining_fuel = self.fuel - self.reserve_fuel
+    def identify_distance_that_can_be_travelled(self,fuel_left,mileage):
+        self.mileage = mileage
+        self.fuel_left = fuel_left
+        remaining_fuel = self.fuel_left - self.reserve_fuel
         distance = remaining_fuel * self.mileage
         return(distance)
     
-    def identify_distance_travelled(self, initial_fuel):
-        fuel_consumed = initial_fuel - self.fuel
+    def identify_distance_travelled(self,initial_fuel,fuel_left,mileage):
+        self.mileage = mileage
+        self.fuel_left = fuel_left
+        fuel_consumed = initial_fuel - self.fuel_left
         distance = fuel_consumed * self.mileage
         return(distance)
     
 
-v1 = Vehicle(50,10)
-print("Distance that can be travelled is {}".format(v1.identify_distance_that_can_be_travelled() ))
-print("Distance travelled is {}".format(v1.identify_distance_travelled(100)))
+v1 = Vehicle()
+Distance_can_be_travelled = v1.identify_distance_that_can_be_travelled(50,10)
+Distance_travelled = v1.identify_distance_travelled(100,10,50) 
+print("Distance that can be travelled is {}".format(Distance_can_be_travelled))
+print("Distance travelled is {}".format(Distance_travelled))
 
         
                                                     
